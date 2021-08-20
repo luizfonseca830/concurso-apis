@@ -1,6 +1,6 @@
 package com.br.concurso.api.resource;
 
-import com.br.concurso.api.envent.RecursoCriadoEvent;
+import com.br.concurso.api.event.RecursoCriadoEvent;
 import com.br.concurso.api.model.Category;
 import com.br.concurso.api.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;

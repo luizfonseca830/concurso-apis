@@ -1,13 +1,11 @@
 package com.br.concurso.api.resource;
 
-import com.br.concurso.api.envent.RecursoCriadoEvent;
+import com.br.concurso.api.event.RecursoCriadoEvent;
 import com.br.concurso.api.model.People;
 import com.br.concurso.api.repository.PeopleRepository;
 import com.br.concurso.api.service.PeopleService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

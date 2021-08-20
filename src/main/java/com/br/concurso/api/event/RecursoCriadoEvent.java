@@ -1,4 +1,4 @@
-package com.br.concurso.api.envent;
+package com.br.concurso.api.event;
 
 import org.springframework.context.ApplicationEvent;
 
