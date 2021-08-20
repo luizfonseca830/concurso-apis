@@ -75,7 +75,12 @@
             <artifactId>hibernate-java8</artifactId>
             <version>5.5.6.Final</version>
         </dependency>
-
+        <!--ira trazer a causa raiz da exception-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.9</version>
+        </dependency>
 
     </dependencies>
 
