@@ -1,6 +1,6 @@
-package com.br.concurso.api.envent.listener;
+package com.br.concurso.api.event.listener;
 
-import com.br.concurso.api.envent.RecursoCriadoEvent;
+import com.br.concurso.api.event.RecursoCriadoEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
