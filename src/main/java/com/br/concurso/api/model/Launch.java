@@ -1,5 +1,7 @@
 package com.br.concurso.api.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -15,9 +17,11 @@ public class Launch {
     private String description;
 
     @Column(name = "due_date")
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dueDate;
 
     @Column(name = "payment_date")
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate paymentDate;
 
     private BigDecimal amount;
