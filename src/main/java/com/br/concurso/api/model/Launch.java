@@ -3,6 +3,7 @@ package com.br.concurso.api.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -14,8 +15,10 @@ public class Launch {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long code;
 
+    @NotNull
     private String description;
 
+    @NotNull
     @Column(name = "due_date")
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dueDate;
@@ -24,17 +27,21 @@ public class Launch {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate paymentDate;
 
+    @NotNull
     private BigDecimal amount;
 
     private String observation;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     private TypeLanch type;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "category_code")
-    private  Category category;
+    private Category category;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "people_code")
     private People people;

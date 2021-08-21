@@ -25,7 +25,7 @@ public class PeopleService {
         peopleRepository.save(peopleSave);
     }
 
-    private People getPeopleForCode(Long code) {
+    public People getPeopleForCode(Long code) {
         People peopleSave = peopleRepository.findById(code)
         .orElseThrow(() -> new EmptyResultDataAccessException(1));
         return this.peopleRepository.save(peopleSave);
