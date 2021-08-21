@@ -4,6 +4,7 @@ import com.br.concurso.api.event.RecursoCriadoEvent;
 import com.br.concurso.api.exceptionhandler.ConcursoExceptionHandler;
 import com.br.concurso.api.model.Launch;
 import com.br.concurso.api.repository.LaunchRepository;
+import com.br.concurso.api.resource.filter.LaunchFilter;
 import com.br.concurso.api.service.LaunchService;
 import com.br.concurso.api.service.exception.NonexistentOrInactivePersonException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,8 @@ public class LaunchResource {
     private MessageSource messageSource;
 
     @GetMapping
-    public List<Launch> list() {
-        return launchRepository.findAll();
+    public List<Launch> search(LaunchFilter launchFilter) {
+        return launchRepository.filter(launchFilter);
     }
 
     @GetMapping("/{code}")
