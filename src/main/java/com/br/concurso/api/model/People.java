@@ -1,5 +1,7 @@
 package com.br.concurso.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -52,6 +54,13 @@ public class People {
 
     public void setActive(Boolean active) {
         this.active = active;
+    }
+
+    //    Não sera serializado pelo jackson e hibernate
+    @JsonIgnore
+    @Transient
+    public boolean isInactive() {
+        return !this.active;
     }
 
     @Override
