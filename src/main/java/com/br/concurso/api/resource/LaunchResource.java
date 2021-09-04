@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,7 +45,7 @@ public class LaunchResource {
     @GetMapping("/{code}")
     public ResponseEntity<Optional<Launch>> searchForCode(@PathVariable Long code) {
         Optional<Launch> launch = launchRepository.findById(code);
-        return launch != null ? ResponseEntity.ok(launch) : ResponseEntity.notFound().build();
+        return launch.isPresent() ? ResponseEntity.ok(launch) : ResponseEntity.notFound().build();
     }
 
     @PostMapping
@@ -60,7 +60,12 @@ public class LaunchResource {
     public ResponseEntity<Object> handleNonexistentOrInactivePersonException(NonexistentOrInactivePersonException ex) {
         String messageUser = messageSource.getMessage("pessoa.inexistente-ou-inativa", null, LocaleContextHolder.getLocale());
         String messageDeveloper = ex.toString();
-        List<ConcursoExceptionHandler.Error> erros = Arrays.asList(new ConcursoExceptionHandler.Error(messageUser, messageDeveloper));
+        List<ConcursoExceptionHandler.Error> erros = Collections.singletonList(new ConcursoExceptionHandler.Error(messageUser, messageDeveloper));
         return ResponseEntity.badRequest().body(erros);
     }
+
+    @DeleteMapping("/{code}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void remove(@PathVariable Long code){ this.launchRepository.deleteById(code);}
+
 }
