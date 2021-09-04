@@ -47,7 +47,7 @@ public class PeopleResource {
     @GetMapping("/{code}")
     public ResponseEntity<Optional<People>> searchForCode(@PathVariable Long code) {
         Optional<People> people = peopleRepository.findById(code);
-        return people != null ? ResponseEntity.ok(people) : ResponseEntity.notFound().build();
+        return people.isPresent() ? ResponseEntity.ok(people) : ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{code}")
